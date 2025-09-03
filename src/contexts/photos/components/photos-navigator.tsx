@@ -1,8 +1,8 @@
 import type React from "react";
 import Skeleton from "../../../components/skeleton";
 import ButtonIcon from "../../../components/button-icon";
-import ArrowLeftIcon from "../../../assets/icons/chevron-left.svg?react";
-import ArrowRightIcon from "../../../assets/icons/chevron-right.svg?react";
+import ArrowLeftIcon from "../../../components/assets/icons/chevron-left.svg?react";
+import ArrowRightIcon from "../../../components/assets/icons/chevron-right.svg?react";
 import Button from "../../../components/button";
 import { useNavigate } from "react-router";
 import cx from "classnames";

@@ -10,39 +10,21 @@ import {
 } from "../../../components/dialog";
 import InputText from "../../../components/input-text";
 import Text from "../../../components/text";
-import type { Photo } from "../../photos/models/photo";
-import SelectCheckboxIllustration from "../../../assets/images/select-checkbox.svg?react";
+import SelectCheckboxIllustration from "../../../components/assets/images/select-checkbox.svg?react";
 import Skeleton from "../../../components/skeleton";
-import ImagePreview from "../../../components/image-preview";
+import PhotoImageSelectable from "../../photos/components/photo-image-selectable";
+import usePhotos from "../../photos/hooks/use-photos";
 
 interface AlbumNewDialogProps {
   trigger: React.ReactNode;
 }
 
 export default function AlbumNewDialog({ trigger }: AlbumNewDialogProps) {
-  const isLoadingPhotos = false;
-  const photos: Photo[] = [
-    {
-      id: "123",
-      title: "Olá mundo!",
-      imageId: "portrait-tower.png",
-      albums: [
-        { id: "3421", title: "Album 1" },
-        { id: "123", title: "Album 2" },
-        { id: "456", title: "Album 3" },
-      ],
-    },
-    {
-      id: "321",
-      title: "Olá mundo!",
-      imageId: "portrait-tower.png",
-      albums: [
-        { id: "3421", title: "Album 1" },
-        { id: "123", title: "Album 2" },
-        { id: "456", title: "Album 3" },
-      ],
-    },
-  ];
+  const { photos, isLoadingPhotos } = usePhotos();
+
+  function handleTogglePhoto(selected: boolean, photoId: string) {
+    console.log(selected, photoId);
+  }
 
   return (
     <Dialog>
@@ -61,11 +43,14 @@ export default function AlbumNewDialog({ trigger }: AlbumNewDialogProps) {
             {!isLoadingPhotos && photos.length > 0 && (
               <div className="flex flex-wrap gap-2">
                 {photos.map((photo) => (
-                  <ImagePreview
+                  <PhotoImageSelectable
                     key={photo.id}
-                    src={`/images/${photo.imageId}`}
+                    src={`${import.meta.env.VITE_IMAGES_URL}/${photo.imageId}`}
                     title={photo.title}
-                    className="w-20 h-20 rounded"
+                    imageClassName="w-20 h-20"
+                    onSelectImage={(selected) =>
+                      handleTogglePhoto(selected, photo.id)
+                    }
                   />
                 ))}
               </div>
@@ -76,7 +61,7 @@ export default function AlbumNewDialog({ trigger }: AlbumNewDialogProps) {
                 {Array.from({ length: 4 }).map((_, index) => (
                   <Skeleton
                     key={`photo-loading-${index}`}
-                    className="w-20 h-20 rounded"
+                    className="w-20 h-20 rounded-lg"
                   />
                 ))}
               </div>

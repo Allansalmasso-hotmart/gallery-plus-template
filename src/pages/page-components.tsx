@@ -1,12 +1,12 @@
 import Button from "../components/button";
 import ButtonIcon from "../components/button-icon";
-import ChevronLeftIcon from "../assets/icons/chevron-left.svg?react";
-import ChevronRightIcon from "../assets/icons/chevron-right.svg?react";
+import ChevronLeftIcon from "../components/assets/icons/chevron-left.svg?react";
+import ChevronRightIcon from "../components/assets/icons/chevron-right.svg?react";
 import Badge from "../components/badge";
 import Alert from "../components/alert";
 import Divider from "../components/divider";
 import InputText from "../components/input-text";
-import SearchIcon from "../assets/icons/search.svg?react";
+import SearchIcon from "../components/assets/icons/search.svg?react";
 import InputCheckbox from "../components/input-checkbox";
 import InputSingleFile from "../components/input-single-file";
 import { useForm } from "react-hook-form";

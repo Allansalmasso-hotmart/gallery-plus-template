@@ -4,7 +4,7 @@ import Card from "./card";
 import cn from "classnames";
 import Text from "./text";
 import ButtonIcon from "./button-icon";
-import XIcon from "../assets/icons/x.svg?react";
+import XIcon from "./assets/icons/x.svg?react";
 import Divider from "./divider";
 
 export const Dialog = DialogPrimivite.Root;
